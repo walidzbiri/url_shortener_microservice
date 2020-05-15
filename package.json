@@ -1,0 +1,24 @@
+{
+  "name": "url-shortener-microservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node shortener",
+    "create-db": "docker exec mysql-container mysql --defaults-extra-file=/usr/config.cnf -e \"create database url_shortener;",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "knex": "^0.21.1",
+    "mysql2": "^2.1.0",
+    "url-exists": "^1.0.3",
+    "valid-url": "^1.0.9"
+  }
+}

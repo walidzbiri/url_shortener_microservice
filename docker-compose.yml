@@ -1,0 +1,22 @@
+version: '2.1'
+services:
+  mysql:
+    build: ./db
+    image: mysql
+    environment:
+       MYSQL_ROOT_PASSWORD: walid
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+        test: "exit 0"
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      mysql:
+          condition: service_healthy
+    entrypoint:
+        - /usr/local/bin/docker-entrypoint.sh
+volumes:
+    db_data: {}
